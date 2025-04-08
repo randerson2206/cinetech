@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>CineTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: #000;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e50914 !important;
+        }
+
+        .btn-outline-light {
+            border-color: #e50914;
+            color: #e50914;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #e50914;
+            color: #fff;
+        }
+
+        .filme-card {
+            background-color: transparent;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .filme-imagem {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .filme-imagem:hover {
+            transform: scale(1.05);
+        }
+
+        .filme-info {
+            margin-top: 10px;
+        }
+
+        .filme-info h5 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .filme-info p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .filme-info a.btn {
+            font-size: 0.85rem;
+        }
+
+        .bg-generos {
+            background-color: #222;
+            border-bottom: 1px solid #333;
+        }
+
+        .dropdown-toggle {
+            background-color: #e50914;
+            border: none;
+        }
+
+        .dropdown-menu {
+            background-color: #000;
+        }
+
+        .dropdown-menu button {
+            color: #fff;
+        }
+
+        .dropdown-menu button:hover {
+            background-color: #e50914;
+        }
+        /* Efeito de brilho na imagem */
+.filme-imagem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+}
+
+/* Badge do ano de lançamento (caso use no JS futuramente) */
+.filme-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #e50914;
+    color: white;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+}
+
+/* Hover nos botões com brilho */
+.btn-outline-light:hover,
+.dropdown-menu button:hover {
+    background-color: #e50914;
+    color: white;
+    box-shadow: 0 0 10px #e50914;
+}
+
+/* Melhor visual da dropdown: menu de gêneros com espaçamento */
+.dropdown-menu {
+    background-color: #000;
+    border: none;
+    padding: 0;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: white;
+    transition: background 0.3s ease;
+}
+/* Badge de nota (IMDb) */
+.filme-nota {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #f5c518; /* cor da IMDb */
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a href="index.html" class="navbar-brand">CineTech</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex ms-auto" role="search" id="formPesquisa">
+                <input class="form-control me-2" type="search" placeholder="Buscar filme..." id="inputPesquisa">
+                <button class="btn btn-outline-light" type="submit">Pesquisar</button>
+            </form>
+
+            <a href="/frontend/admin/admin.html" class="btn btn-outline-light ms-3">Admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-generos py-3">
+    <div class="container d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Filtrar por Gênero</h5>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown">
+                Selecionar Gênero
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" id="listaCategorias">
+                <!-- Populado via JS -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-white">Filmes em Destaque</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" id="listaFilmes"></div>
+</div>
+
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
